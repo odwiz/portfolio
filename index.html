@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wisdom | Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap");
+
+      :root {
+        --primary: 234 179 8;
+      }
+
+      .tail-container {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      .heading-font {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .hero-bg {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+          url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=2000&amp;h=1200&amp;fit=crop")
+            center/cover no-repeat;
+      }
+
+      .nav-link {
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: rgb(234 179 8);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-link:hover:after {
+        width: 100%;
+      }
+
+      .project-card {
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .project-card:hover {
+        transform: scale(1.05) translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+      }
+
+      .hero-text {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, rgb(234 179 8), rgb(245 158 11));
+        z-index: 50;
+      }
+    </style>
+  </head>
+  <body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+    <!-- Progress Bar -->
+    <div id="progress-bar" class="scroll-progress w-0"></div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-9 h-9 bg-yellow-400 rounded-2xl flex items-center justify-center text-zinc-950 font-bold text-2xl"
+          >
+            W
+          </div>
+          <span class="heading-font text-2xl font-semibold tracking-tighter"
+            >Wisdom</span
+          >
+        </div>
+
+        <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+          <a
+            href="#"
+            onclick="smoothScrollTo('hero')"
+            class="nav-link text-zinc-300 hover:text-white"
+            >Home</a
+          >
+          <a
+            href="#"
+            onclick="smoothScrollTo('about')"
+            class="nav-link text-zinc-300 hover:text-white"
+            >About</a
+          >
+          <a
+            href="#"
+            onclick="smoothScrollTo('projects')"
+            class="nav-link text-zinc-300 hover:text-white"
+            >Projects</a
+          >
+          <a
+            href="#"
+            onclick="smoothScrollTo('contact')"
+            class="nav-link text-zinc-300 hover:text-white"
+            >Contact</a
+          >
+        </div>
+
+        <a
+          href="#"
+          onclick="smoothScrollTo('contact')"
+          class="px-6 py-3 bg-yellow-400 hover:bg-yellow-300 transition-all text-zinc-950 font-semibold rounded-2xl text-sm flex items-center gap-2"
+        >
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Let's Talk</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center pt-20">
+      <div
+        class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <!-- Left Content -->
+        <div class="hero-text pt-12 md:pt-0">
+          <div
+            class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl mb-6 text-sm"
+          >
+            <div
+              class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
+            ></div>
+            <span class="tracking-widest">AVAILABLE FOR FREELANCE</span>
+          </div>
+
+          <h1
+            class="heading-font text-7xl md:text-8xl font-semibold tracking-tighter leading-none mb-4"
+          >
+            Hi, I'm <span class="text-yellow-400">Wisdom</span>
+          </h1>
+          <p
+            class="text-4xl md:text-5xl text-zinc-400 font-light tracking-tight mb-8"
+          >
+            Software Engineer
+          </p>
+
+          <p class="max-w-md text-lg text-zinc-300 mb-10">
+            Crafting exceptional digital experiences with clean code and
+            thoughtful design. Passionate about AI, scalable systems, and
+            beautiful interfaces.
+          </p>
+
+          <div class="flex items-center gap-5">
+            <button
+              onclick="smoothScrollTo('projects')"
+              class="px-8 py-5 bg-white text-zinc-900 hover:bg-yellow-300 transition-all rounded-3xl font-semibold flex items-center gap-3 group"
+            >
+              View Projects
+              <i
+                class="fa-solid fa-arrow-right group-active:rotate-45 transition-transform"
+              ></i>
+            </button>
+
+            <button
+              onclick="smoothScrollTo('contact')"
+              class="px-8 py-5 border border-white/50 hover:border-white transition-all rounded-3xl font-medium"
+            >
+              Get in touch
+            </button>
+          </div>
+
+          <!-- Trust signals -->
+          <div class="mt-16 flex items-center gap-8 text-sm">
+            <div>
+              <div class="text-3xl font-semibold text-yellow-400">50+</div>
+              <div class="text-zinc-400">Projects Delivered</div>
+            </div>
+            <div>
+              <div class="text-3xl font-semibold text-yellow-400">15</div>
+              <div class="text-zinc-400">Countries</div>
+            </div>
+            <div>
+              <div class="text-3xl font-semibold text-yellow-400">4.9</div>
+              <div class="text-zinc-400">Client Rating</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="relative md:flex justify-end hidden">
+          <div class="relative">
+            <div
+              class="absolute -inset-6 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-[4rem] -rotate-6"
+            ></div>
+            <img
+              id="hero-image"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&amp;h=1000&amp;fit=crop&amp;crop=face"
+              alt="Wisdom - Engineer"
+              class="relative w-full max-w-lg rounded-3xl shadow-2xl border border-white/10 object-cover"
+            />
+
+            <!-- Floating badge -->
+            <div
+              class="absolute -bottom-6 -right-6 bg-zinc-900 border border-yellow-400/30 rounded-3xl px-6 py-4 shadow-xl"
+            >
+              <div class="flex items-center gap-3">
+                <div class="text-4xl">🚀</div>
+                <div>
+                  <div class="font-semibold">Currently building</div>
+                  <div class="text-yellow-400 text-sm">
+                    Next-gen AI platform
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 flex flex-col items-center gap-2">
+        <div class="text-xs tracking-widest text-zinc-400">
+          SCROLL TO EXPLORE
+        </div>
+        <div
+          class="w-px h-12 bg-gradient-to-b from-transparent via-yellow-400 to-transparent"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-zinc-900">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
+          <div class="md:col-span-5">
+            <div class="sticky top-28">
+              <span
+                class="uppercase tracking-[3px] text-yellow-400 text-sm font-medium"
+                >CHAPTER 01</span
+              >
+              <h2
+                class="heading-font text-6xl font-semibold tracking-tighter mt-3 leading-none"
+              >
+                The Engineer Behind The Code
+              </h2>
+            </div>
+          </div>
+          <div class="md:col-span-7 text-zinc-300 text-lg leading-relaxed">
+            <p class="mb-6">
+              I'm a passionate software engineer with over 6 years of experience
+              building digital products that matter. From consumer apps to
+              enterprise platforms, I love turning complex problems into simple,
+              elegant solutions.
+            </p>
+            <p class="mb-8">
+              Currently focused on full-stack development, machine learning
+              integration, and creating delightful user interfaces that users
+              fall in love with.
+            </p>
+
+            <div class="grid grid-cols-2 gap-8">
+              <div>
+                <h4
+                  class="text-yellow-400 mb-4 text-sm uppercase tracking-widest"
+                >
+                  Tech Stack
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-4 py-2 bg-zinc-800 rounded-2xl text-sm"
+                    >React</span
+                  >
+                  <span class="px-4 py-2 bg-zinc-800 rounded-2xl text-sm"
+                    >TypeScript</span
+                  >
+                  <span class="px-4 py-2 bg-zinc-800 rounded-2xl text-sm"
+                    >Python</span
+                  >
+                  <span class="px-4 py-2 bg-zinc-800 rounded-2xl text-sm"
+                    >AWS</span
+                  >
+                  <span class="px-4 py-2 bg-zinc-800 rounded-2xl text-sm"
+                    >Next.js</span
+                  >
+                  <span class="px-4 py-2 bg-zinc-800 rounded-2xl text-sm"
+                    >Tailwind</span
+                  >
+                </div>
+              </div>
+              <div>
+                <h4
+                  class="text-yellow-400 mb-4 text-sm uppercase tracking-widest"
+                >
+                  Passions
+                </h4>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-yellow-400"></i> Artificial
+                    Intelligence
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-yellow-400"></i>
+                    Sustainable Tech
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-yellow-400"></i> 3D
+                    Interfaces
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-check text-yellow-400"></i> Open
+                    Source
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-12">
+          <div>
+            <span class="uppercase text-yellow-400 text-sm tracking-widest"
+              >CHAPTER 02</span
+            >
+            <h2 class="heading-font text-6xl font-semibold tracking-tighter">
+              Featured Projects
+            </h2>
+          </div>
+          <a href="#" class="hidden md:flex items-center gap-3 text-sm group">
+            <span class="font-medium">View all work</span>
+            <div
+              class="w-8 h-8 rounded-2xl bg-white/10 flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-zinc-950 transition-all"
+            >
+              →
+            </div>
+          </a>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5"
+          >
+            <div class="h-64 bg-zinc-800 relative">
+              <img
+                src="https://picsum.photos/id/1015/600/400"
+                alt="Project 1"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute top-6 left-6 w-12 h-12 bg-white/90 text-zinc-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg"
+              >
+                🤖
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-2">Nexus AI Assistant</h3>
+              <p class="text-zinc-400 line-clamp-3">
+                Intelligent AI companion that helps professionals manage tasks,
+                meetings, and knowledge using natural language.
+              </p>
+              <div
+                class="mt-8 pt-8 border-t border-white/10 flex items-center justify-between text-sm"
+              >
+                <span class="text-yellow-400">React • Python • OpenAI</span>
+                <button
+                  class="text-xs uppercase tracking-widest hover:text-yellow-400 transition-colors"
+                >
+                  View Case Study →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5"
+          >
+            <div class="h-64 bg-zinc-800 relative">
+              <img
+                src="https://picsum.photos/id/201/600/400"
+                alt="Project 2"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute top-6 left-6 w-12 h-12 bg-white/90 text-zinc-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg"
+              >
+                ⚡
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-2">
+                Pulse Energy Dashboard
+              </h3>
+              <p class="text-zinc-400 line-clamp-3">
+                Real-time energy monitoring platform for smart homes with
+                predictive analytics and carbon footprint tracking.
+              </p>
+              <div
+                class="mt-8 pt-8 border-t border-white/10 flex items-center justify-between text-sm"
+              >
+                <span class="text-yellow-400">Next.js • IoT • Three.js</span>
+                <button
+                  class="text-xs uppercase tracking-widest hover:text-yellow-400 transition-colors"
+                >
+                  View Case Study →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5"
+          >
+            <div class="h-64 bg-zinc-800 relative">
+              <img
+                src="https://picsum.photos/id/237/600/400"
+                alt="Project 3"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div
+                class="absolute top-6 left-6 w-12 h-12 bg-white/90 text-zinc-900 rounded-2xl flex items-center justify-center text-3xl shadow-lg"
+              >
+                🌍
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-2">TerraForge</h3>
+              <p class="text-zinc-400 line-clamp-3">
+                Collaborative platform for architects and engineers to design
+                sustainable buildings in real-time 3D.
+              </p>
+              <div
+                class="mt-8 pt-8 border-t border-white/10 flex items-center justify-between text-sm"
+              >
+                <span class="text-yellow-400">Unity • Blender • Firebase</span>
+                <button
+                  class="text-xs uppercase tracking-widest hover:text-yellow-400 transition-colors"
+                >
+                  View Case Study →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL / CTA -->
+    <section class="py-20 bg-gradient-to-b from-zinc-900 to-black">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <div class="italic text-2xl leading-relaxed text-zinc-300">
+          "Working with Wisdom was transformative. He doesn't just code — he
+          thinks deeply about the user experience and business impact. Truly one
+          of the best engineers I've collaborated with."
+        </div>
+        <div class="mt-10 flex items-center justify-center gap-4">
+          <div class="w-12 h-12 bg-zinc-700 rounded-2xl"></div>
+          <div>
+            <div class="font-semibold">Sarah Chen</div>
+            <div class="text-sm text-zinc-500">CEO, Lumora Labs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-zinc-950">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16">
+          <div>
+            <h2
+              class="heading-font text-6xl font-semibold tracking-tighter mb-6"
+            >
+              Let's build something extraordinary together.
+            </h2>
+            <p class="text-zinc-400 text-lg">
+              Whether you have a project in mind or just want to say hello, I'm
+              always excited to connect with fellow creators.
+            </p>
+
+            <div class="mt-12 space-y-6">
+              <a href="#" class="flex items-center gap-4 group">
+                <div
+                  class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform"
+                >
+                  ✉️
+                </div>
+                <div>
+                  <div class="text-sm text-zinc-400">Email</div>
+                  <div class="font-medium">wisdom@hey.com</div>
+                </div>
+              </a>
+              <a href="#" class="flex items-center gap-4 group">
+                <div
+                  class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform"
+                >
+                  𝕏
+                </div>
+                <div>
+                  <div class="text-sm text-zinc-400">Twitter / X</div>
+                  <div class="font-medium">@wisdomcodes</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-zinc-900 rounded-3xl p-10">
+            <form class="space-y-8">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  class="w-full bg-transparent border-b border-white/20 focus:border-yellow-400 py-4 outline-none transition-colors"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  class="w-full bg-transparent border-b border-white/20 focus:border-yellow-400 py-4 outline-none transition-colors"
+                />
+              </div>
+              <div>
+                <textarea
+                  placeholder="Tell me about your project..."
+                  rows="5"
+                  class="w-full bg-transparent border-b border-white/20 focus:border-yellow-400 py-4 outline-none transition-colors resize-none"
+                ></textarea>
+              </div>
+              <button
+                type="button"
+                class="w-full py-6 bg-yellow-400 text-zinc-950 font-semibold rounded-3xl text-lg hover:bg-amber-300 transition-all active:scale-95"
+              >
+                SEND MESSAGE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/10">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm"
+      >
+        <div class="flex items-center gap-8">
+          <span>© 2026 Wisdom. All rights reserved.</span>
+        </div>
+        <div class="flex gap-8 text-zinc-400">
+          <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+          <a href="#" class="hover:text-white transition-colors">GitHub</a>
+        </div>
+        <div>Made with passion and clean code</div>
+      </div>
+    </footer>
+
+    <script>
+      // Tailwind script already included via CDN
+
+      // Smooth scroll
+      function smoothScrollTo(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      // Progress bar
+      function setupProgressBar() {
+        const progressBar = document.getElementById("progress-bar");
+
+        window.addEventListener("scroll", () => {
+          const scrollTop = window.scrollY;
+          const docHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = `${scrollPercent}%`;
+        });
+      }
+
+      // Keyboard shortcuts
+      function setupKeyboard() {
+        document.addEventListener("keydown", (e) => {
+          if (e.metaKey && e.key === "k") {
+            e.preventDefault();
+            alert("Command palette would open here ✨");
+          }
+        });
+      }
+
+      // Initialize everything
+      function initialize() {
+        setupProgressBar();
+        setupKeyboard();
+
+        // Make hero image more Ronaldo-like (placeholder)
+        const heroImg = document.getElementById("hero-image");
+        if (heroImg) {
+          heroImg.src = "https://picsum.photos/id/1015/800/1000";
+        }
+
+        console.log(
+          "%cPortfolio loaded successfully ✨",
+          "color: #eab308; font-family: monospace",
+        );
+      }
+
+      window.onload = initialize;
+    </script>
+  </body>
+</html>
